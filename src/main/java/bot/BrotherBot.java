@@ -27,6 +27,7 @@ import java.util.Random;
  *
  * */
 public class BrotherBot extends ListenerAdapter {
+    final QuoteGen quoteGen = new QuoteGen();
     static TokenGen tg;
     public static void main(String[] args) throws FileNotFoundException { // Token stored locally, will not function without injecting
         tg = new TokenGen();
@@ -57,7 +58,7 @@ public class BrotherBot extends ListenerAdapter {
 
         } else if (!event.getAuthor().isBot() ) { // prevent bot from replying to itself on a loop
             String name = event.getAuthor().getName();
-            event.getChannel().sendMessage(hellYeah() + name + " - Hulk \"Hollywood\" Hogan").queue();
+            event.getChannel().sendMessage(quoteGen.getQuote()).queue();
 //            event.getChannel().sendMessage(myMessage(event)).queue();
         }
 
